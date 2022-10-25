@@ -1,0 +1,49 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <title>Weather App</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="src/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <br />
+      <form id="search-bar">
+        <input type="search" placeholder="Name of city..." id="search-input" />
+        <input type="submit" placeholder="Search" class="btn btn-primary" />
+      </form>
+      <button type="button" class="btn btn-success" id="current-button">
+        Current
+      </button>
+      <div class="row">
+        <div class="col-4 today">
+          <h1>Chicago, IL</h1>
+          <p id="current-time"></p>
+          <p>Current Temp:</p>
+          <p id="current-temp">21° C</p>
+        </div>
+        <div class="col today">
+          <h4>Today's Forecast</h4>
+          <p>
+            High: <span id="temp-max"></span>
+            <br />
+            Low: <span id="temp-min"></span>
+            <br />
+            <span id="description">Mostly Sunny</span> <br />
+            Humidity: <span id="humidity">%</span>
+            <br />
+            Wind: <span id="wind">mph</span>
+            <br />
+          </p>
+        </div>
+      </div>
+    </div>
+    <script src="src/script.js"></script>
+  </body>
+</html>
