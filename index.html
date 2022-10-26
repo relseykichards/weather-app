@@ -13,37 +13,49 @@
   </head>
   <body>
     <div class="container">
-      <br />
-      <form id="search-bar">
-        <input type="search" placeholder="Name of city..." id="search-input" />
-        <input type="submit" placeholder="Search" class="btn btn-primary" />
-      </form>
-      <button type="button" class="btn btn-success" id="current-button">
-        Current
-      </button>
-      <div class="row">
-        <div class="col-4 today">
-          <h1>Chicago, IL</h1>
-          <p id="current-time"></p>
-          <p>Current Temp:</p>
-          <p id="current-temp">21° C</p>
-        </div>
-        <div class="col today">
-          <h4>Today's Forecast</h4>
-          <p>
-            High: <span id="temp-max"></span>
-            <br />
-            Low: <span id="temp-min"></span>
-            <br />
-            <span id="description">Mostly Sunny</span> <br />
-            Humidity: <span id="humidity">%</span>
-            <br />
-            Wind: <span id="wind">mph</span>
-            <br />
-          </p>
+      <div class="boxWrap">
+        <br />
+        <form id="search-bar">
+          <input
+            type="search"
+            placeholder="Name of city..."
+            id="search-input"
+          />
+          <input type="submit" placeholder="Search" class="btn btn-primary" />
+        </form>
+        <button type="button" class="btn btn-success" id="current-button">
+          Current
+        </button>
+        <div class="row">
+          <div class="col-4 today">
+            <h1>Chicago, IL</h1>
+            <p id="current-time"></p>
+            <p>Current Temp:</p>
+            <p id="current-temp">21° C</p>
+          </div>
+          <div class="col today">
+            <h4>Today's Forecast</h4>
+            <p>
+              High: <span id="temp-max"></span>
+              <br />
+              Low: <span id="temp-min"></span>
+              <br />
+              <span id="description">Mostly Sunny</span> <br />
+              Humidity: <span id="humidity">%</span>
+              <br />
+              Wind: <span id="wind">mph</span>
+              <br />
+            </p>
+          </div>
         </div>
       </div>
     </div>
+    <p class="codedBy">
+      <a href="https://github.com/relseykichards/weather-app"
+        >Open-source code</a
+      >
+      by Kelsey Richards
+    </p>
     <script src="src/script.js"></script>
   </body>
 </html>
