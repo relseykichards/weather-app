@@ -35,6 +35,17 @@ let searchBar = document.querySelector("#search-bar");
 let h1 = document.querySelector("h1");
 searchBar.addEventListener("submit", handleSubmit);
 
+// convert to fahrenheit/celsius
+function displayFahrenheit(event) {
+  event.preventDefault();
+  let fahrenheitTemp = (celsiusTemperature * 9) / 5 + 32;
+  let farTemp = document.querySelector("#current-temp");
+  farTemp.innerHTML = Math.round(fahrenheitTemp);
+}
+
+let fahrenheitLink = document.querySelector("#fahrenheit");
+fahrenheitLink.addEventListener("click", displayFahrenheit);
+
 //make the search engine actually connected to real data input:
 
 function search(city) {
@@ -51,6 +62,8 @@ function showWeather(response) {
   let temperature = Math.round(response.data.main.temp);
   currentTemp.innerHTML = `${temperature}`;
   h1.innerHTML = response.data.name;
+
+  celsiusTemperature = response.data.main.temp;
 
   document.querySelector("#temp-max").innerHTML = `${Math.round(
     response.data.main.temp_max
@@ -93,6 +106,8 @@ function getCurrentLocation(position) {
 function getCurrentWeather() {
   navigator.geolocation.getCurrentPosition(getCurrentLocation);
 }
+
+let celsiusTemperature = null;
 
 let currentTemp = document.querySelector("#current-temp");
 let apiKey = "6a48a550fc04f170639e60d52b8a6bc5";
