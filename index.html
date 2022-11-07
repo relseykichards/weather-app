@@ -26,12 +26,20 @@
         <button type="button" class="btn btn-success" id="current-button">
           Current
         </button>
+        <h1>Chicago, IL</h1>
         <div class="row">
-          <div class="col-4 today">
-            <h1>Chicago, IL</h1>
+          <div class="col today">
             <p id="current-time"></p>
-            <p>Current Temp:</p>
-            <p id="current-temp">21° C</p>
+            <div class="d-flex flex-row">
+              <img
+                src="https://ssl.gstatic.com/onebox/weather/64/sunny_s_cloudy.png"
+                alt="partlyCloudy"
+                class="p-2"
+                id="icon"
+              />
+              <p class="p-2" id="current-temp">21</p>
+              <span class="units">°C | °F </span>
+            </div>
           </div>
           <div class="col today">
             <h4>Today's Forecast</h4>

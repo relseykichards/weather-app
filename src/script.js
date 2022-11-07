@@ -49,7 +49,7 @@ function handleSubmit(event) {
 
 function showWeather(response) {
   let temperature = Math.round(response.data.main.temp);
-  currentTemp.innerHTML = `${temperature}°C`;
+  currentTemp.innerHTML = `${temperature}`;
   h1.innerHTML = response.data.name;
 
   document.querySelector("#temp-max").innerHTML = `${Math.round(

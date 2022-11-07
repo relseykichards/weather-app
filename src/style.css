@@ -50,6 +50,16 @@ h2 {
   font-size: 20px;
 }
 
+#current-temp {
+  font-size: 48px;
+  font-weight: 400;
+}
+
+.units {
+  position: relative;
+  margin-top: 20px;
+}
+
 #current-button {
   display: block;
   position: relative;
