@@ -48,6 +48,7 @@ h2 {
 
 #current-time {
   font-size: 20px;
+  margin: 0px;
 }
 
 #current-temp {
