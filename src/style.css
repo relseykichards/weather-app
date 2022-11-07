@@ -46,6 +46,12 @@ h2 {
   margin-top: 0;
 }
 
+.active {
+  color: 000;
+  cursor: default;
+  text-decoration: none;
+}
+
 #current-time {
   font-size: 20px;
   margin: 0px;

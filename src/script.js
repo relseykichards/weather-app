@@ -35,16 +35,29 @@ let searchBar = document.querySelector("#search-bar");
 let h1 = document.querySelector("h1");
 searchBar.addEventListener("submit", handleSubmit);
 
-// convert to fahrenheit/celsius
+// convert to fahrenheit/celsius with link
 function displayFahrenheit(event) {
   event.preventDefault();
   let fahrenheitTemp = (celsiusTemperature * 9) / 5 + 32;
   let farTemp = document.querySelector("#current-temp");
   farTemp.innerHTML = Math.round(fahrenheitTemp);
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
 }
 
 let fahrenheitLink = document.querySelector("#fahrenheit");
 fahrenheitLink.addEventListener("click", displayFahrenheit);
+
+function displayCelsius(event) {
+  event.preventDefault();
+  let celsiusTemp = document.querySelector("#current-temp");
+  celsiusTemp.innerHTML = celsiusTemperature;
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+}
+
+let celsiusLink = document.querySelector("#celsius");
+celsiusLink.addEventListener("click", displayCelsius);
 
 //make the search engine actually connected to real data input:
 
@@ -63,7 +76,7 @@ function showWeather(response) {
   currentTemp.innerHTML = `${temperature}`;
   h1.innerHTML = response.data.name;
 
-  celsiusTemperature = response.data.main.temp;
+  celsiusTemperature = Math.round(response.data.main.temp);
 
   document.querySelector("#temp-max").innerHTML = `${Math.round(
     response.data.main.temp_max
@@ -106,6 +119,8 @@ function getCurrentLocation(position) {
 function getCurrentWeather() {
   navigator.geolocation.getCurrentPosition(getCurrentLocation);
 }
+
+//make active and non active c and f buttons:
 
 let celsiusTemperature = null;
 
