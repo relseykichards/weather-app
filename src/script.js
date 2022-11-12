@@ -120,6 +120,33 @@ function getCurrentWeather() {
   navigator.geolocation.getCurrentPosition(getCurrentLocation);
 }
 
+//forecast
+
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+  let days = ["Sun", "Mon", "Tue", "Wed"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+        <div class="col-2 day">
+          <div class="dayOfWeek">${day}</div>
+          <div class="highTemperature">70°F</div>
+
+          <div class="lowTemperature">58°F</div>
+
+          <div class="weatherDesctiption">Partly Cloudy</div>
+
+          <div class="emoji">⛅️</div>
+          </div>
+      `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 //make active and non active c and f buttons:
 
 let celsiusTemperature = null;
@@ -134,3 +161,4 @@ currentButton.addEventListener("click", getCurrentWeather);
 searchBar.addEventListener("submit", handleSubmit);
 
 search("New York");
+displayForecast();
