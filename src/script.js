@@ -71,6 +71,14 @@ function handleSubmit(event) {
   search(city);
 }
 
+//forecast api call
+
+function getForecast(coords) {
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&appid=${apiKey}&units=metric`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
+}
+
 function showWeather(response) {
   let temperature = Math.round(response.data.main.temp);
   currentTemp.innerHTML = `${temperature}`;
@@ -105,6 +113,8 @@ function showWeather(response) {
       "alt",
       `http://openweathermap.org/img/wn/${response.data.weather[0].main}@2x.png`
     );
+
+  getForecast(response.data.coord);
 }
 
 //make another button to show current location
@@ -122,7 +132,8 @@ function getCurrentWeather() {
 
 //forecast
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
   let days = ["Sun", "Mon", "Tue", "Wed"];
@@ -152,8 +163,9 @@ function displayForecast() {
 let celsiusTemperature = null;
 
 let currentTemp = document.querySelector("#current-temp");
-let apiKey = "6a48a550fc04f170639e60d52b8a6bc5";
+
 let units = "units=metric";
+let apiKey = "6a48a550fc04f170639e60d52b8a6bc5";
 
 let currentButton = document.querySelector("#current-button");
 currentButton.addEventListener("click", getCurrentWeather);
@@ -161,4 +173,3 @@ currentButton.addEventListener("click", getCurrentWeather);
 searchBar.addEventListener("submit", handleSubmit);
 
 search("New York");
-displayForecast();
