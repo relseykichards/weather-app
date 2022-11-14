@@ -43,30 +43,6 @@ let searchBar = document.querySelector("#search-bar");
 let h1 = document.querySelector("h1");
 searchBar.addEventListener("submit", handleSubmit);
 
-// convert to fahrenheit/celsius with link
-function displayFahrenheit(event) {
-  event.preventDefault();
-  let fahrenheitTemp = (celsiusTemperature * 9) / 5 + 32;
-  let farTemp = document.querySelector("#current-temp");
-  farTemp.innerHTML = Math.round(fahrenheitTemp);
-  celsiusLink.classList.remove("active");
-  fahrenheitLink.classList.add("active");
-}
-
-let fahrenheitLink = document.querySelector("#fahrenheit");
-fahrenheitLink.addEventListener("click", displayFahrenheit);
-
-function displayCelsius(event) {
-  event.preventDefault();
-  let celsiusTemp = document.querySelector("#current-temp");
-  celsiusTemp.innerHTML = celsiusTemperature;
-  celsiusLink.classList.add("active");
-  fahrenheitLink.classList.remove("active");
-}
-
-let celsiusLink = document.querySelector("#celsius");
-celsiusLink.addEventListener("click", displayCelsius);
-
 //make the search engine actually connected to real data input:
 
 function search(city) {
@@ -82,8 +58,8 @@ function handleSubmit(event) {
 //forecast api call
 
 function getForecast(coords) {
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&appid=${apiKey}&units=metric`;
-  console.log(apiUrl);
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&appid=${apiKey}&units=imperial`;
+
   axios.get(apiUrl).then(displayForecast);
 }
 
@@ -96,16 +72,16 @@ function showWeather(response) {
 
   document.querySelector("#temp-max").innerHTML = `${Math.round(
     response.data.main.temp_max
-  )}°C`;
+  )}°F`;
   document.querySelector("#temp-min").innerHTML = `${Math.round(
     response.data.main.temp_min
-  )}°C`;
+  )}°F`;
   document.querySelector(
     "#humidity"
   ).innerHTML = `${response.data.main.humidity}%`;
   document.querySelector("#wind").innerHTML = `${Math.round(
-    response.data.wind.speed
-  )} km/h`;
+    response.data.wind.speed * 0.62
+  )} mph`;
   document.querySelector(
     "#description"
   ).innerHTML = `${response.data.weather[0].main}`;
@@ -184,7 +160,7 @@ let celsiusTemperature = null;
 
 let currentTemp = document.querySelector("#current-temp");
 
-let units = "units=metric";
+let units = "units=imperial";
 let apiKey = "6a48a550fc04f170639e60d52b8a6bc5";
 
 let currentButton = document.querySelector("#current-button");
