@@ -27,6 +27,14 @@ let currentTime = document.querySelector("#current-time");
 
 currentTime.innerHTML = `${day} ${hour}:${minute}`;
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
 //Add a search engine, when searching for a city
 //(i.e.Paris), display the city name on the page
 //after the user submits the form.
@@ -133,25 +141,37 @@ function getCurrentWeather() {
 //forecast
 
 function displayForecast(response) {
-  console.log(response.data.daily);
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
   let days = ["Sun", "Mon", "Tue", "Wed"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
-        <div class="col-2 day">
-          <div class="dayOfWeek">${day}</div>
-          <div class="highTemperature">70°F</div>
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        `
+        <div class="col day">
+          <div class="dayOfWeek">${formatDay(forecastDay.dt)}</div>
+          <div class="highTemperature">${Math.round(
+            forecastDay.temp.max
+          )}°</div>
 
-          <div class="lowTemperature">58°F</div>
+          <div class="lowTemperature">${Math.round(forecastDay.temp.min)}°</div>
 
-          <div class="weatherDesctiption">Partly Cloudy</div>
+          <div class="weatherDesctiption">${
+            forecastDay.weather[0].description
+          }</div>
 
-          <div class="emoji">⛅️</div>
-          </div>
+          <img src = "http://openweathermap.org/img/wn/${
+            forecastDay.weather[0].icon
+          }@2x.png"
+          alt = ""
+          id="icon"
+          width="55"
+          />
+        </div>
       `;
+    }
   });
 
   forecastHTML = forecastHTML + `</div>`;

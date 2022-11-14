@@ -35,10 +35,6 @@ h2 {
   font-size: 14px;
   opacity: 0.7;
 }
-.emoji {
-  text-align: center;
-  font-size: xx-large;
-}
 .day {
   border: 2px solid rgba(32, 124, 202, 0.5);
   border-radius: 6px;
@@ -60,6 +56,10 @@ h2 {
   font-size: 48px;
   font-weight: 400;
 }
+#icon {
+  display: block;
+  text-align: center;
+}
 
 .units {
   position: relative;
@@ -76,7 +76,7 @@ h2 {
 .boxWrap {
   border: 2px solid rgba(0, 0, 0, 0.3);
   border-radius: 6px;
-  max-width: 700px;
+  max-width: 600px;
   margin: 0 auto;
   margin-top: 10px;
   padding: 10px;
