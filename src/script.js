@@ -134,7 +134,7 @@ function displayForecast(response) {
 
           <div class="lowTemperature">${Math.round(forecastDay.temp.min)}°</div>
 
-          <div class="weatherDesctiption">${
+          <div class="weatherDescription">${
             forecastDay.weather[0].description
           }</div>
 

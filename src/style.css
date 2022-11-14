@@ -1,5 +1,5 @@
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Oxygen", sans-serif;
 }
 
 h2 {
@@ -12,16 +12,22 @@ h2 {
   margin: 0px 3px 0;
 }
 
+.todayDetails {
+  opacity: 0.7;
+}
+
 .dayOfWeek {
   text-align: center;
   font-size: 16px;
   color: #016fc5;
+  margin-bottom: 5px;
 }
 .highTemperature {
   text-align: center;
   color: 000;
   opacity: 0.7;
   padding: 0;
+  font-size: 16px;
 }
 .lowTemperature {
   text-align: center;
@@ -34,6 +40,7 @@ h2 {
   text-align: center;
   font-size: 14px;
   opacity: 0.7;
+  text-transform: capitalize;
 }
 .day {
   border: 2px solid rgba(32, 124, 202, 0.5);
@@ -59,6 +66,12 @@ h2 {
 #icon {
   display: block;
   text-align: center;
+  position: relative;
+  margin-left: 15px;
+}
+
+#description {
+  opacity: 0.7;
 }
 
 .units {
@@ -69,8 +82,8 @@ h2 {
 #current-button {
   display: block;
   position: relative;
-  top: -54px;
-  left: 265px;
+  top: -52px;
+  left: 260px;
 }
 
 .boxWrap {
@@ -84,4 +97,8 @@ h2 {
 
 .codedBy {
   text-align: center;
+}
+
+.btn {
+  padding: 5px;
 }
