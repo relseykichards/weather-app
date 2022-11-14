@@ -1,6 +1,4 @@
-//In your project, display the current date and time
-//using JavaScript: Tuesday 16: 00
-
+//display the current date and time
 let now = new Date();
 
 let days = [
@@ -35,15 +33,11 @@ function formatDay(timestamp) {
   return days[day];
 }
 
-//Add a search engine, when searching for a city
-//(i.e.Paris), display the city name on the page
-//after the user submits the form.
+//search engine
 
 let searchBar = document.querySelector("#search-bar");
 let h1 = document.querySelector("h1");
 searchBar.addEventListener("submit", handleSubmit);
-
-//make the search engine actually connected to real data input:
 
 function search(city) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&${units}`;
@@ -62,6 +56,8 @@ function getForecast(coords) {
 
   axios.get(apiUrl).then(displayForecast);
 }
+
+//today's forecast
 
 function showWeather(response) {
   let temperature = Math.round(response.data.main.temp);
@@ -101,7 +97,7 @@ function showWeather(response) {
   getForecast(response.data.coord);
 }
 
-//make another button to show current location
+//show current location button
 
 function getCurrentLocation(position) {
   let lat = position.coords.latitude;
@@ -114,7 +110,7 @@ function getCurrentWeather() {
   navigator.geolocation.getCurrentPosition(getCurrentLocation);
 }
 
-//forecast
+//daily forecast
 
 function displayForecast(response) {
   let forecast = response.data.daily;
@@ -153,10 +149,6 @@ function displayForecast(response) {
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
-
-//make active and non active c and f buttons:
-
-let celsiusTemperature = null;
 
 let currentTemp = document.querySelector("#current-temp");
 
