@@ -85,13 +85,13 @@ function showWeather(response) {
     .querySelector("#icon")
     .setAttribute(
       "src",
-      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+      `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
     );
   document
     .querySelector("#icon")
     .setAttribute(
       "alt",
-      `http://openweathermap.org/img/wn/${response.data.weather[0].main}@2x.png`
+      `https://openweathermap.org/img/wn/${response.data.weather[0].main}@2x.png`
     );
 
   getForecast(response.data.coord);
@@ -134,7 +134,7 @@ function displayForecast(response) {
             forecastDay.weather[0].description
           }</div>
 
-          <img src = "http://openweathermap.org/img/wn/${
+          <img src = "https://openweathermap.org/img/wn/${
             forecastDay.weather[0].icon
           }@2x.png"
           alt = ""
